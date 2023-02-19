@@ -47,6 +47,7 @@ export default {
 
 <style scoped>
 .block-background{
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
@@ -66,7 +67,7 @@ export default {
 }
 @keyframes slide-up {
   0%{
-    transform: translate3d(0);
+    transform: translate3d(0, 0, 0);
   }
   100%{
     transform: translate3d(100%, -100%, -1000px);
@@ -81,7 +82,7 @@ export default {
     transform: translate3d(100%, -100%, -1000px);
   }
   100%{
-    transform: translate3d(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 .block-menu{
