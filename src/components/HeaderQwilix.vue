@@ -1,72 +1,24 @@
 <template>
   <div class="header-block">
-    <div :class= "!drawer? 'hamburger hamburger--arrow-r' : 'hamburger is-active hamburger--arrow-r'" @click="drawer = !drawer">
+    <div :class= "!showBurgerMenu? 'hamburger hamburger--arrow-r' : 'hamburger is-active hamburger--arrow-r'" @click="blockBurgerMenu">
       <div class="hamburger-box">
         <div class="hamburger-inner" >
         </div>
       </div>
     </div>
   </div>
-  <q-drawer
-    v-model="drawer"
-    show-if-above
-    :width="200"
-    :breakpoint="400"
-  >
-    <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
-      <q-list padding>
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="inbox" />
-          </q-item-section>
+  <div class="block-menu"
+       v-if="showBurgerMenu">
+    <div class="block-about">
 
-          <q-item-section>
-            Inbox
-          </q-item-section>
-        </q-item>
+    </div>
+    <div class="block-examples">
 
-        <q-item active clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="star" />
-          </q-item-section>
+    </div>
+    <div class="block-contacts">
 
-          <q-item-section>
-            Star
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="send" />
-          </q-item-section>
-
-          <q-item-section>
-            Send
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="drafts" />
-          </q-item-section>
-
-          <q-item-section>
-            Drafts
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-scroll-area>
-
-    <q-img class="absolute-top" src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-      <div class="absolute-bottom bg-transparent">
-        <q-avatar size="56px" class="q-mb-sm">
-          <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-        </q-avatar>
-        <div class="text-weight-bold">Razvan Stoenescu</div>
-        <div>@rstoenescu</div>
-      </div>
-    </q-img>
-  </q-drawer>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -75,21 +27,33 @@ import { ref } from 'vue'
 export default {
   name: "HeaderQwilix",
   setup () {
+    const showBurgerMenu = ref(false)
     return {
-      drawer: ref(false)
+      drawer: ref(false),
+      showBurgerMenu,
+      blockBurgerMenu() {
+        showBurgerMenu.value = !showBurgerMenu.value;
+      },
     }
   }
 }
 </script>
 
 <style scoped>
+.block-menu{
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 99;
+}
 .header-block{
   width: 100%;
   display: flex;
   justify-content: flex-end;
   height: 50px;
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 780px) {
   .header-block{
     width: 70px;
     background: lightgray;
@@ -97,9 +61,51 @@ export default {
     height: 100vh;
     float: right;
     align-items: center;
+    position: fixed;
+    right: 0;
+    z-index: 999;
   }
   .hamburger{
     transform: rotate(-90deg);
+  }
+  .block-menu{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 70px;
+  }
+  .block-about{
+    cursor: pointer;
+    height: 100%;
+    width: 700px;
+    background: white;
+    border: black 1px solid;
+    position: absolute;
+  }
+  .block-about:hover{
+    background: black;
+    transition: 0.3s ease;
+  }
+  .block-examples{
+    height: 450px;
+    width: 450px;
+    background: white;
+    border: black 1px solid;
+    position: absolute;
+  }
+  .block-examples:hover{
+    background: black;
+    transition: 0.3s ease;
+  }
+  .block-contacts{
+    height: 250px;
+    width: 250px;
+    background: white;
+    border: black 1px solid;
+    position: absolute;
+  }
+  .block-contacts:hover{
+    background: black;
+    transition: 0.3s ease;
   }
 }
 .hamburger {
