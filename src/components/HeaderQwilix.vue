@@ -7,18 +7,24 @@
       </div>
     </div>
   </div>
-  <div class="block-menu"
-       v-if="showBurgerMenu">
-    <div class="block-about">
+  <transition name="menu">
+    <div class="block-menu"
+         v-if="showBurgerMenu">
+      <div class="block-about">
 
-    </div>
-    <div class="block-examples">
+      </div>
+      <div class="block-examples">
 
-    </div>
-    <div class="block-contacts">
+      </div>
+      <div class="block-contacts">
 
+      </div>
     </div>
+  </transition>
+  <transition name="bg-block">
+  <div class="block-background" v-if="showBurgerMenu">
   </div>
+  </transition>
 </template>
 
 <script>
@@ -40,10 +46,47 @@ export default {
 </script>
 
 <style scoped>
-.block-menu{
+.block-background{
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+}
+.bg-block-leave-active,
+.bg-block-enter-active {
+  transition: opacity 1s ease-in-out;
+}
+.bg-block-enter-from,
+.bg-block-leave-to {
+  opacity: 0;
+}
+.menu-leave-active {
+  z-index: 999;
+  animation: slide-up 1s ease-in-out;
+}
+@keyframes slide-up {
+  0%{
+    transform: translate3d(0);
+  }
+  100%{
+    transform: translate3d(100%, -100%, -1000px);
+  }
+}
+.menu-enter-active{
+  z-index: 999;
+  animation: slide-down 1s ease-in-out;
+}
+@keyframes slide-down {
+  0%{
+    transform: translate3d(100%, -100%, -1000px);
+  }
+  100%{
+    transform: translate3d(0);
+  }
+}
+.block-menu{
+  width: 100vw;
+  height: 100vh;
   position: fixed;
   z-index: 99;
 }
