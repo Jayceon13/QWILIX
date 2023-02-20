@@ -1,5 +1,6 @@
 <template>
   <q-page ref="page" class="horizontal-scroll">
+
     <div class="first-block">
       <div class="block-logo">
         <img class="logo" src="/img/QWILIX.svg">

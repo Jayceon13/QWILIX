@@ -10,13 +10,20 @@
   <transition name="menu">
     <div class="block-menu"
          v-if="showBurgerMenu">
-      <div class="block-about">
+      <div @click="$router.push ('about')"
+           class="block-about"
+           style="cursor: pointer"
+      >
         ABOUT US
       </div>
-      <div class="block-examples">
+      <div @click="$router.push ('examples')"
+           class="block-examples">
         EXAMPLES
       </div>
-      <div class="block-contacts">
+      <div @click="$router.push ('contacts')"
+           class="block-contacts"
+           style="cursor: pointer"
+      >
         CONTACTS
       </div>
     </div>
@@ -40,6 +47,7 @@ export default {
       blockBurgerMenu() {
         showBurgerMenu.value = !showBurgerMenu.value;
       },
+
     }
   }
 }
