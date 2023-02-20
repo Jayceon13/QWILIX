@@ -67,10 +67,10 @@ export default {
 }
 @keyframes slide-up {
   0%{
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
   100%{
-    transform: translate3d(100%, -100%, -1000px);
+    transform: translate(100%, -100%);
   }
 }
 .menu-enter-active{
@@ -79,10 +79,10 @@ export default {
 }
 @keyframes slide-down {
   0%{
-    transform: translate3d(100%, -100%, -1000px);
+    transform: translate(100%, -100%);
   }
   100%{
-    transform: translate3d(0, 0, 0);
+    transform: translate(0, 0);
   }
 }
 .block-menu{
@@ -119,7 +119,7 @@ export default {
   }
   .block-about{
     cursor: pointer;
-    height: 100%;
+    height: 100vh;
     width: 700px;
     background: white;
     border: black 1px solid;

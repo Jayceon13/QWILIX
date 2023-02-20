@@ -13,7 +13,7 @@ export default {
   name: 'IndexPage',
   setup () {
     const state = reactive({
-      isHorizontalScroll: window.innerWidth > 750
+      isHorizontalScroll: window.innerWidth > 780
     })
 
     const handleWheelScroll = (event) => {
@@ -22,7 +22,7 @@ export default {
     }
 
     const toggleHorizontalScroll = () => {
-      state.isHorizontalScroll = window.innerWidth > 750
+      state.isHorizontalScroll = window.innerWidth > 780
 
       if (state.isHorizontalScroll) {
         document.querySelector('.horizontal-scroll').addEventListener('wheel', handleWheelScroll)
@@ -65,7 +65,7 @@ export default {
   background: green;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 780px) {
   .q-page.horizontal-scroll {
     display: flex;
     overflow-y: hidden;
@@ -73,8 +73,20 @@ export default {
     -webkit-overflow-scrolling: touch;
   }
   .q-page::-webkit-scrollbar{
-    width: 0;
+    display: none;
   }
+  @media only screen and (min-width: 780px) {
+  .q-page.horizontal-scroll {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+  .first-block, .second-block, .third-block {
+    flex: 0 0 100vw;
+    height: 100vh;
+  }
+}
   .first-block, .second-block, .third-block {
     flex: 0 0 100vw;
     height: 100vh;
