@@ -1,6 +1,13 @@
 <template>
   <q-page ref="page" class="horizontal-scroll">
-    <div class="first-block"></div>
+    <div class="first-block">
+      <div class="block-logo">
+        <img class="logo" src="/img/QWILIX.svg">
+      </div>
+      <div class="first-block-text">
+        <h5>Welcome to our company, a leading provider of website development services. Our team of skilled professionals is dedicated to creating stunning websites that not only look great, but also provide exceptional user experiences.</h5>
+      </div>
+    </div>
     <div class="second-block"></div>
     <div class="third-block"></div>
   </q-page>
@@ -52,7 +59,9 @@ export default {
 .first-block{
   width: 100vw;
   height: 100vh;
-  background: orange;
+  background: url("/img/japan.jpg");
+  background-size: cover;
+  display: flex;
 }
 .second-block{
   width: 100vw;
@@ -63,6 +72,9 @@ export default {
   width: 100vw;
   height: 100vh;
   background: green;
+}
+.first-block-text{
+  color: white;
 }
 
 @media only screen and (min-width: 780px) {
@@ -90,6 +102,15 @@ export default {
   .first-block, .second-block, .third-block {
     flex: 0 0 100vw;
     height: 100vh;
+  }
+  .block-logo{
+    margin-left: 30px;
+    align-self: center;
+  }
+  .first-block-text{
+    display: flex;
+    align-self: flex-end;
+    padding-right: 130px;
   }
 }
 </style>

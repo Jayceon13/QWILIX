@@ -11,13 +11,13 @@
     <div class="block-menu"
          v-if="showBurgerMenu">
       <div class="block-about">
-
+        ABOUT US
       </div>
       <div class="block-examples">
-
+        EXAMPLES
       </div>
       <div class="block-contacts">
-
+        CONTACTS
       </div>
     </div>
   </transition>
@@ -55,7 +55,7 @@ export default {
 }
 .bg-block-leave-active,
 .bg-block-enter-active {
-  transition: opacity 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
 }
 .bg-block-enter-from,
 .bg-block-leave-to {
@@ -63,23 +63,23 @@ export default {
 }
 .menu-leave-active {
   z-index: 999;
-  animation: slide-up 1s ease-in-out;
+  animation: slide-up 0.5s ease-in-out;
 }
 @keyframes slide-up {
   0%{
     transform: translate(0, 0);
   }
   100%{
-    transform: translate(100%, -100%);
+    transform: translate(100%, -200%);
   }
 }
 .menu-enter-active{
   z-index: 999;
-  animation: slide-down 1s ease-in-out;
+  animation: slide-down 0.5s ease-in-out;
 }
 @keyframes slide-down {
   0%{
-    transform: translate(100%, -100%);
+    transform: translate(100%, -200%);
   }
   100%{
     transform: translate(0, 0);
@@ -124,10 +124,16 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
+    font-weight: bold;
+    display: flex;
+    align-items: self-end;
+    padding: 80px;
+    font-size: 30px;
   }
   .block-about:hover{
     background: black;
     transition: 0.3s ease;
+    color: white;
   }
   .block-examples{
     height: 450px;
@@ -135,10 +141,16 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
+    font-weight: bold;
+    display: flex;
+    align-items: self-end;
+    padding: 80px;
+    font-size: 25px;
   }
   .block-examples:hover{
     background: black;
     transition: 0.3s ease;
+    color: white;
   }
   .block-contacts{
     height: 250px;
@@ -146,10 +158,16 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
+    font-weight: bold;
+    display: flex;
+    align-items: self-end;
+    padding: 80px;
+    font-size: 20px;
   }
   .block-contacts:hover{
     background: black;
     transition: 0.3s ease;
+    color: white;
   }
 }
 .hamburger {
