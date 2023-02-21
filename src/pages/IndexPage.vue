@@ -1,4 +1,5 @@
 <template>
+  <preloader-menu ref="preloader"></preloader-menu>
   <q-page ref="page" class="horizontal-scroll">
 
     <div class="first-block">
@@ -16,9 +17,13 @@
 
 <script>
 import { onMounted, onUnmounted, reactive } from 'vue'
+import PreloaderMenu from "components/PreloaderMenu";
 
 export default {
   name: 'IndexPage',
+  components: {
+    PreloaderMenu
+  },
   setup () {
     const state = reactive({
       isHorizontalScroll: window.innerWidth > 780

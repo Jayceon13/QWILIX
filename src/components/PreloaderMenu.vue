@@ -57,7 +57,7 @@
     transform: translateY(0%);
   }
   50%{
-  transform: translateY(0%);
+    transform: translateY(0%);
   }
   100%{
     transform: translateY(-100%);
@@ -86,6 +86,11 @@
   }
 }
 
+/* Добавим класс для скрытия preloader */
+.preloader.hidden {
+  display: none;
+}
+
 </style>
 
 <script>
@@ -94,18 +99,23 @@ import { defineComponent, onMounted, ref } from 'vue'
 export default defineComponent({
   name: 'PreloaderMenu',
   setup() {
-    const isPreloaderHidden = ref(false)
+    const isLoaded = ref(false)
+    const isPreloaderHidden = ref(false) // Изменим на false, чтобы preloader был виден
 
     onMounted(() => {
       setTimeout(() => {
-        isPreloaderHidden.value = true
+        isPreloaderHidden.value = true // Изменяем на true, чтобы скрыть preloader
+        isLoaded.value = true
       }, 1600)
     })
 
     return {
-      isPreloaderHidden
+      isPreloaderHidden,
+      isLoaded
     }
   }
 })
 </script>
+
+
 
