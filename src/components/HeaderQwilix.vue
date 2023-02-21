@@ -9,7 +9,8 @@
   </div>
   <transition name="menu">
     <div class="block-menu"
-         v-if="showBurgerMenu">
+         v-if="showBurgerMenu"
+         @click="blockBurgerMenu">
       <div @click="() => {$router.push ('about'); blockBurgerMenu()}"
            class="block-about"
            style="cursor: pointer"
@@ -29,7 +30,7 @@
     </div>
   </transition>
   <transition name="bg-block">
-  <div class="block-background" v-if="showBurgerMenu">
+  <div class="block-background" v-if="showBurgerMenu" @click="blockBurgerMenu">
   </div>
   </transition>
   <transition name="router-animation">
@@ -45,12 +46,10 @@ export default {
   setup () {
     const showBurgerMenu = ref(false)
     return {
-      drawer: ref(false),
       showBurgerMenu,
       blockBurgerMenu() {
         showBurgerMenu.value = !showBurgerMenu.value;
       },
-
     }
   }
 }
@@ -58,7 +57,9 @@ export default {
 
 <style scoped>
 .block-background{
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
