@@ -22,11 +22,6 @@ export default defineComponent({
     HeaderQwilix,
     PreloaderMenu
   },
-  onMounted() {
-    setTimeout(() => {
-      this.$refs.preloader.$el.style.display = "none";
-    }, 3000);
-  }
 })
 </script>
 
