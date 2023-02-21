@@ -37,15 +37,15 @@
   display: flex;
 }
 .preloader-logo-1{
-  animation: slide-up-1 2s ease-in-out forwards;
+  animation: slide-up-1 1.2s ease-in-out forwards;
 }
 .preloader-logo-2{
   display: flex;
   justify-content: center;
-  animation: slide-up-2 2.5s ease-in-out forwards;
+  animation: slide-up-2 1.5s ease-in-out forwards;
 }
 .preloader-logo-3{
-  animation: slide-up-3 3s ease-in-out forwards;
+  animation: slide-up-3 1.7s ease-in-out forwards;
 }
 .img-2 {
   width: 300px;
@@ -99,7 +99,7 @@ export default defineComponent({
     onMounted(() => {
       setTimeout(() => {
         isPreloaderHidden.value = true
-      }, 3000)
+      }, 1600)
     })
 
     return {
