@@ -1,4 +1,5 @@
 <template>
+  <preloader-menu ref="preloader"></preloader-menu>
   <q-layout view="lHh Lpr lFf">
     <header-qwilix></header-qwilix>
     <q-page-container>
@@ -10,17 +11,22 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import HeaderQwilix from "components/HeaderQwilix";
-
+import PreloaderMenu from "components/PreloaderMenu";
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
     HeaderQwilix,
+    PreloaderMenu
   },
-
+  onMounted() {
+    setTimeout(() => {
+      this.$refs.preloader.$el.style.display = "none";
+    }, 3000);
+  }
 })
 </script>
 

@@ -1,7 +1,11 @@
 <template>
-  <div class="preloader">
-    <div class="preloader-logo">
-      <img src="/img/QWILIX.svg">
+  <div class="preloader" :class="{ 'hidden': isPreloaderHidden }">
+    <div class="preloader-logo-1">
+    </div>
+    <div class="preloader-logo-2">
+      <img class="img-2" src="/img/QWILIX.svg">
+    </div>
+    <div class="preloader-logo-3">
     </div>
   </div>
 </template>
@@ -12,8 +16,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: black;
-  color: white;
   width: 100%;
   height: 100%;
   z-index: 99999;
@@ -21,69 +23,89 @@
   justify-content: center;
   align-items: center;
   font-size: 50px;
-  animation: slide-fade 1s ease-in-out forwards;
-  animation-delay: 1.3s;
 }
-.preloader-logo {
-  animation: zoom .5s ease-in-out forwards;
+.preloader-logo-1,
+.preloader-logo-2,
+.preloader-logo-3{
   transform: scale(1);
+  background: black;
+  height: 100%;
+  color: white;
+  width: 33.3%;
   position: relative;
   overflow: hidden;
+  display: flex;
+}
+.preloader-logo-1{
+  animation: slide-up-1 2s ease-in-out forwards;
+}
+.preloader-logo-2{
+  display: flex;
+  justify-content: center;
+  animation: slide-up-2 2.5s ease-in-out forwards;
+}
+.preloader-logo-3{
+  animation: slide-up-3 3s ease-in-out forwards;
+}
+.img-2 {
+  width: 300px;
 }
 
-@keyframes zoom {
+
+@keyframes slide-up-1 {
   0%{
-    transform: scale(1);
+    transform: translateY(0%);
+  }
+  50%{
+  transform: translateY(0%);
   }
   100%{
-    transform: scale(1.2);
+    transform: translateY(-100%);
   }
 }
-
-@keyframes slideRight {
+@keyframes slide-up-2 {
   0%{
-    transform: translateX(-110%);
+    transform: translateY(0%);
+  }
+  50%{
+    transform: translateY(0%);
   }
   100%{
-    transform: translateX(0%);
+    transform: translateY(-100%);
   }
 }
-
-@keyframes slideRight {
+@keyframes slide-up-3 {
   0%{
-    transform: translateX(-110%);
+    transform: translateY(0%);
+  }
+  50%{
+    transform: translateY(0%);
   }
   100%{
-    transform: translateX(0%);
+    transform: translateY(-100%);
   }
 }
 
-@keyframes slide-fade {
-  0%{
-    transform: translateX(0%);
-  }
-  100%{
-    transform: translateX(100%);
-  }
-}
-
-.preloader-logo:before{
-position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  transform: translateX(-110%);
-  animation: slideRight 1s ease-in-out forwards;
-  animation-delay: .5s;
-}
 </style>
 
 <script>
-export default {
-  name: "preloader-menu"
-}
+import { defineComponent, onMounted, ref } from 'vue'
+
+export default defineComponent({
+  name: 'PreloaderMenu',
+  setup() {
+    const isPreloaderHidden = ref(false)
+
+    onMounted(() => {
+      setTimeout(() => {
+        isPreloaderHidden.value = true
+      }, 3000)
+    })
+
+    return {
+      isPreloaderHidden
+    }
+  }
+})
 </script>
 
