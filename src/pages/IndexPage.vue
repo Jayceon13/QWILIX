@@ -53,7 +53,22 @@ export default {
       event.preventDefault()
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
-        el.scrollLeft += event.deltaY
+        let delta = event.deltaY
+        if (event.deltaMode === 1) {
+          delta *= 40
+        }
+        el.scrollLeft += delta / 4
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        if (event.key === 'ArrowUp') {
+          el.scrollLeft -= 30
+        } else if (event.key === 'ArrowDown') {
+          el.scrollLeft += 30
+        }
       }
     }
 
@@ -64,8 +79,10 @@ export default {
       if (el) {
         if (state.isHorizontalScroll) {
           el.addEventListener('wheel', handleWheelScroll)
+          document.addEventListener('keydown', handleKeyDown)
         } else {
           el.removeEventListener('wheel', handleWheelScroll)
+          document.removeEventListener('keydown', handleKeyDown)
         }
       }
     }
@@ -80,15 +97,19 @@ export default {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
         el.removeEventListener('wheel', handleWheelScroll)
+        document.removeEventListener('keydown', handleKeyDown)
       }
     })
 
     return {
-      handleWheelScroll
+      handleWheelScroll,
+      handleKeyDown
     }
   }
 };
 </script>
+
+
 
 <style scoped>
 .first-block{
