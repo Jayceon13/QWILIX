@@ -26,16 +26,22 @@ export default {
 
     const handleWheelScroll = (event) => {
       event.preventDefault()
-      document.querySelector('.horizontal-scroll').scrollLeft += event.deltaY
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        el.scrollLeft += event.deltaY
+      }
     }
 
     const toggleHorizontalScroll = () => {
       state.isHorizontalScroll = window.innerWidth > 780
 
-      if (state.isHorizontalScroll) {
-        document.querySelector('.horizontal-scroll').addEventListener('wheel', handleWheelScroll)
-      } else {
-        document.querySelector('.horizontal-scroll').removeEventListener('wheel', handleWheelScroll)
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        if (state.isHorizontalScroll) {
+          el.addEventListener('wheel', handleWheelScroll)
+        } else {
+          el.removeEventListener('wheel', handleWheelScroll)
+        }
       }
     }
 
@@ -46,7 +52,10 @@ export default {
 
     onUnmounted(() => {
       window.removeEventListener('resize', toggleHorizontalScroll)
-      document.querySelector('.horizontal-scroll').removeEventListener('wheel', handleWheelScroll)
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        el.removeEventListener('wheel', handleWheelScroll)
+      }
     })
 
     return {

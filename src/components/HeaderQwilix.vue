@@ -10,17 +10,17 @@
   <transition name="menu">
     <div class="block-menu"
          v-if="showBurgerMenu">
-      <div @click="$router.push ('about')"
+      <div @click="() => {$router.push ('about'); blockBurgerMenu()}"
            class="block-about"
            style="cursor: pointer"
       >
         ABOUT US
       </div>
-      <div @click="$router.push ('examples')"
+      <div @click="() => {$router.push ('examples'); blockBurgerMenu()}"
            class="block-examples">
         EXAMPLES
       </div>
-      <div @click="$router.push ('contacts')"
+      <div @click="() => {$router.push ('contacts'); blockBurgerMenu() }"
            class="block-contacts"
            style="cursor: pointer"
       >
@@ -31,6 +31,9 @@
   <transition name="bg-block">
   <div class="block-background" v-if="showBurgerMenu">
   </div>
+  </transition>
+  <transition name="router-animation">
+    <router-view></router-view>
   </transition>
 </template>
 
@@ -60,6 +63,10 @@ export default {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 90;
+}
+.router-animation-leave-active,
+.router-animation-enter-active{
+  transition: opacity 0.5s ease-in-out;
 }
 .bg-block-leave-active,
 .bg-block-enter-active {

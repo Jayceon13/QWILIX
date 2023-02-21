@@ -2,7 +2,9 @@
   <q-layout view="lHh Lpr lFf">
     <header-qwilix></header-qwilix>
     <q-page-container>
-      <router-view />
+      <transition :key="$route.meta.key" name="router-anim">
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
@@ -22,3 +24,6 @@ export default defineComponent({
 })
 </script>
 
+<style>
+
+</style>
