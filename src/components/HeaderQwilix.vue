@@ -1,4 +1,7 @@
 <template>
+  <div class="block-home" @click="$router.push ('/')" v-if="$route.path !== '/'">
+    <img src="/icons/Q.svg">
+  </div>
   <div class="header-block">
     <div :class= "!showBurgerMenu? 'hamburger hamburger--arrow-r' : 'hamburger is-active hamburger--arrow-r'" @click="blockBurgerMenu">
       <div class="hamburger-box">
@@ -33,9 +36,6 @@
   <div class="block-background" v-if="showBurgerMenu" @click="blockBurgerMenu">
   </div>
   </transition>
-  <transition name="router-animation">
-    <router-view></router-view>
-  </transition>
 </template>
 
 <script>
@@ -56,6 +56,15 @@ export default {
 </script>
 
 <style scoped>
+.block-home{
+  position: fixed;
+  display: flex;
+}
+.block-home img:hover{
+  background-color: rgba(200, 200, 200, 0.5);
+  border-radius: 30px;
+  transition: 1s;
+}
 .block-background{
   position: fixed;
   top: 0;
@@ -184,6 +193,13 @@ export default {
     background: black;
     transition: 0.3s ease;
     color: white;
+  }
+  .block-home{
+    width: 60px;
+    height: 80px;
+    z-index: 999;
+    margin: 30px;
+    cursor: pointer;
   }
 }
 .hamburger {

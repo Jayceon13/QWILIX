@@ -3,6 +3,14 @@
   <q-page ref="page" class="horizontal-scroll">
 
     <div class="first-block">
+      <div class="parallax-container">
+        <div class="parallax-layer"></div>
+        <div class="parallax-layer">
+          <div class="parallax-content">
+            <!-- Ваш контент здесь -->
+          </div>
+        </div>
+      </div>
       <div class="block-logo">
         <img class="logo" src="/img/QWILIX.svg">
       </div>
@@ -69,7 +77,7 @@ export default {
         if (event.deltaMode === 1) {
           delta *= 40
         }
-        el.scrollLeft += delta / 4
+        el.scrollLeft += delta / 2
       }
     }
 
@@ -77,9 +85,9 @@ export default {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
         if (event.key === 'ArrowUp') {
-          el.scrollLeft -= 30
+          el.scrollLeft -= 40
         } else if (event.key === 'ArrowDown') {
-          el.scrollLeft += 30
+          el.scrollLeft += 40
         }
       }
     }
@@ -127,7 +135,7 @@ export default {
 .first-block{
   width: 100vw;
   height: 100vh;
-  background: url("/img/japan.jpg");
+  background-image: url("/img/japan.jpg");
   background-size: cover;
   display: flex;
 }
