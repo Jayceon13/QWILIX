@@ -45,7 +45,7 @@
 
     <div>
       <q-btn label="Submit" type="submit" color="black" id="feedback-form" formaction="/.netlify/functions/send-email"/>
-      <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+      <q-btn label="Reset" type="reset" color="black" flat class="q-ml-sm" />
     </div>
   </q-form>
   <alert-form :show="showAlert"></alert-form>
@@ -115,7 +115,7 @@ export default {
 .q-gutter-md{
   position: absolute;
   background: white;
-  z-index: 98;
+  z-index: 88;
   width: 100%;
   padding: 100px;
   align-self: center;

@@ -58,7 +58,7 @@ export default defineComponent({
 }
 .xicon{
   cursor: pointer;
-  z-index: 99;
+  z-index: 89;
   width: 20px;
   align-self: self-end;
   margin-right: 90px;
