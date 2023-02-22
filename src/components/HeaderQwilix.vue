@@ -121,6 +121,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   height: 50px;
+  position: absolute;
 }
 @media screen and (min-width: 780px) {
   .header-block{

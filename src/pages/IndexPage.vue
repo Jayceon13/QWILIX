@@ -263,7 +263,56 @@ export default {
   }
   .third-block-img img{
     width: 80%;
-    height: 80%;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 1000px) {
+ .first-block-text h5{
+   font-size: 15px;
+ }
+  .first-block-text{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .first-block{
+    flex-flow: column;
+  }
+  .block-logo{
+    align-self: center;
+    margin: 100px 0 100px 0;
+  }
+  .block-logo img{
+    width: 300px;
+  }
+  .first-block-text h5{
+    font-size: 15px;
+  }
+  .first-block-text{
+    width: 100%;
+    padding: 40px;
+  }
+  .second-block{
+    flex-flow: column;
+  }
+  .block-developers img{
+    width: 80px;
+  }
+  .block-developers{
+    text-align: center;
+    width: 100%;
+  }
+  .third-block{
+    flex-flow: column;
+  }
+  .third-block-text{
+    padding: 40px;
+  }
+  .third-block-img img{
+    width: 300px;
+  }
+  .third-block-img{
+    align-self: center;
   }
 }
 </style>
