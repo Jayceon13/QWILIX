@@ -3,6 +3,14 @@
   <q-page ref="page" class="horizontal-scroll">
 
     <div class="first-block">
+      <div class="parallax-container">
+        <div class="parallax-layer"></div>
+        <div class="parallax-layer">
+          <div class="parallax-content">
+            <!-- Ваш контент здесь -->
+          </div>
+        </div>
+      </div>
       <div class="block-logo">
         <img class="logo" src="/img/QWILIX.svg">
       </div>
@@ -31,7 +39,19 @@
         </div>
       </div>
     </div>
-    <div class="third-block"></div>
+    <div class="third-block">
+      <div class="third-block-text">
+        <h4>What We Do</h4>
+        <p>Our team of experienced designers and developers work together to bring your vision to life. We pride ourselves on staying up-to-date with the latest design trends and web development technologies to ensure that your website is not only visually stunning, but also highly functional and user-friendly.
+
+          Whether you need a brand new website or a redesign of an existing one, we can help. We work closely with our clients to understand their unique needs and goals, and then create custom solutions that are tailored to their specific requirements.
+
+          At our core, we are passionate about creating beautiful and functional websites that help our clients achieve their business objectives. Contact us today to learn more about how we can help bring your website to the next level.</p>
+      </div>
+      <div class="third-block-img">
+        <img src="/img/index1.jpg">
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -53,7 +73,22 @@ export default {
       event.preventDefault()
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
-        el.scrollLeft += event.deltaY
+        let delta = event.deltaY
+        if (event.deltaMode === 1) {
+          delta *= 40
+        }
+        el.scrollLeft += delta / 2
+      }
+    }
+
+    const handleKeyDown = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        if (event.key === 'ArrowUp') {
+          el.scrollLeft -= 40
+        } else if (event.key === 'ArrowDown') {
+          el.scrollLeft += 40
+        }
       }
     }
 
@@ -64,8 +99,10 @@ export default {
       if (el) {
         if (state.isHorizontalScroll) {
           el.addEventListener('wheel', handleWheelScroll)
+          document.addEventListener('keydown', handleKeyDown)
         } else {
           el.removeEventListener('wheel', handleWheelScroll)
+          document.removeEventListener('keydown', handleKeyDown)
         }
       }
     }
@@ -80,21 +117,25 @@ export default {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
         el.removeEventListener('wheel', handleWheelScroll)
+        document.removeEventListener('keydown', handleKeyDown)
       }
     })
 
     return {
-      handleWheelScroll
+      handleWheelScroll,
+      handleKeyDown
     }
   }
 };
 </script>
 
+
+
 <style scoped>
 .first-block{
   width: 100vw;
   height: 100vh;
-  background: url("/img/japan.jpg");
+  background-image: url("/img/japan.jpg");
   background-size: cover;
   display: flex;
 }
@@ -122,6 +163,23 @@ export default {
   display: flex;
   justify-content: center;
   flex-flow: column;
+}
+.third-block{
+  display: flex;
+}
+.third-block-text{
+  display: flex;
+  height: 100%;
+  flex-flow: column;
+}
+.third-block h4{
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.third-block-img{
+  display: flex;
+  padding: 40px;
 }
 @media only screen and (min-width: 780px) {
   .q-page.horizontal-scroll {
@@ -190,6 +248,71 @@ export default {
   }
   .second-block{
     border-right: black 1px solid;
+  }
+  .third-block-text{
+    width: 40%;
+    border-right: black 1px solid;
+    padding: 40px;
+    justify-content: space-between;
+    font-weight: bold;
+  }
+  .third-block-img{
+    width: 60%;
+    align-items: center;
+    justify-content: center;
+  }
+  .third-block-img img{
+    width: 80%;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 1000px) {
+ .first-block-text h5{
+   font-size: 15px;
+ }
+  .first-block-text{
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .first-block{
+    flex-flow: column;
+  }
+  .block-logo{
+    align-self: center;
+    margin: 100px 0 100px 0;
+  }
+  .block-logo img{
+    width: 300px;
+  }
+  .first-block-text h5{
+    font-size: 15px;
+  }
+  .first-block-text{
+    width: 100%;
+    padding: 40px;
+  }
+  .second-block{
+    flex-flow: column;
+  }
+  .block-developers img{
+    width: 80px;
+  }
+  .block-developers{
+    text-align: center;
+    width: 100%;
+  }
+  .third-block{
+    flex-flow: column;
+  }
+  .third-block-text{
+    padding: 40px;
+  }
+  .third-block-img img{
+    width: 300px;
+  }
+  .third-block-img{
+    align-self: center;
   }
 }
 </style>
