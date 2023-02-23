@@ -20,9 +20,9 @@
       >
         ABOUT US
       </div>
-      <div @click="() => {$router.push ('examples'); blockBurgerMenu()}"
+      <div @click="() => {$router.push ('projects'); blockBurgerMenu()}"
            class="block-examples">
-        EXAMPLES
+        Projects
       </div>
       <div @click="() => {$router.push ('contacts'); blockBurgerMenu() }"
            class="block-contacts"
@@ -145,8 +145,8 @@ export default {
   }
   .block-about{
     cursor: pointer;
-    height: 100vh;
-    width: 700px;
+    height: 100%;
+    width: 80%;
     background: white;
     border: black 1px solid;
     position: absolute;
@@ -156,14 +156,19 @@ export default {
     padding: 80px;
     font-size: 30px;
   }
+  @media only screen and (max-height: 500px) {
+    .block-about {
+      padding: 60px;
+    }
+  }
   .block-about:hover{
     background: black;
     transition: 0.3s ease;
     color: white;
   }
   .block-examples{
-    height: 450px;
-    width: 450px;
+    height: 66%;
+    width: 50%;
     background: white;
     border: black 1px solid;
     position: absolute;
@@ -173,14 +178,19 @@ export default {
     padding: 80px;
     font-size: 25px;
   }
+  @media only screen and (max-height: 500px) {
+    .block-examples {
+      padding: 40px;
+    }
+  }
   .block-examples:hover{
     background: black;
     transition: 0.3s ease;
     color: white;
   }
   .block-contacts{
-    height: 250px;
-    width: 250px;
+    height: 33%;
+    width: 25%;
     background: white;
     border: black 1px solid;
     position: absolute;
@@ -189,6 +199,11 @@ export default {
     align-items: self-end;
     padding: 80px;
     font-size: 20px;
+  }
+  @media only screen and (max-height: 500px) {
+    .block-contacts {
+      padding: 20px;
+    }
   }
   .block-contacts:hover{
     background: black;
