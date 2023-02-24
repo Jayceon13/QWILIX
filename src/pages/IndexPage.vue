@@ -7,7 +7,6 @@
         <div class="parallax-layer"></div>
         <div class="parallax-layer">
           <div class="parallax-content">
-            <!-- Ваш контент здесь -->
           </div>
         </div>
       </div>
@@ -316,6 +315,10 @@ export default {
 @media only screen and (max-height: 400px) {
   .logo{
     width: 300px;
+  }
+  .first-block-text h5{
+    margin-bottom: 60px;
+    margin-left: 10px;
   }
   .second-block-text p[data-v-7e76ac0d] {
     padding: 30px;
