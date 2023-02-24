@@ -313,6 +313,46 @@ export default {
     width: 100%;
   }
 }
+@media only screen and (max-height: 400px) {
+  .logo{
+    width: 300px;
+  }
+  .second-block-text p[data-v-7e76ac0d] {
+    padding: 30px;
+  }
+  .block-vit img{
+    width: 20%;
+  }
+  .block-dyuk img{
+    width: 20%;
+  }
+  .block-dyuk{
+    margin: 10px;
+  }
+  .block-vit{
+    margin: 10px;
+  }
+  .block-developers p{
+    margin: 0;
+  }
+  .third-block h4{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  .third-block-text{
+    padding: 10px;
+    width: 60%;
+    justify-content: center;
+  }
+  .third-block-img {
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 70px 0 0;
+  }
+}
 @media only screen and (max-width: 780px) {
   .first-block{
     flex-flow: column;
