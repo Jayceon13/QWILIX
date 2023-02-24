@@ -66,7 +66,9 @@ export default {
   },
   setup () {
     const state = reactive({
-      isHorizontalScroll: window.innerWidth > 780
+      isHorizontalScroll: window.innerWidth > 780,
+      touchStartX: 0,
+      touchStartY: 0
     })
 
     const handleWheelScroll = (event) => {
@@ -77,17 +79,43 @@ export default {
         if (event.deltaMode === 1) {
           delta *= 40
         }
-        el.scrollLeft += delta / 2
+        if (window.innerWidth <= 780) {
+          el.scrollLeft += delta
+        } else {
+          el.scrollLeft += delta / 2
+        }
       }
     }
 
     const handleKeyDown = (event) => {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
-        if (event.key === 'ArrowUp') {
-          el.scrollLeft -= 40
-        } else if (event.key === 'ArrowDown') {
-          el.scrollLeft += 40
+        if (event.keyCode === 37) {
+          el.scrollLeft -= 20
+        } else if (event.keyCode === 39) {
+          el.scrollLeft += 20
+        }
+      }
+    }
+
+    const handleTouchStart = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        state.touchStartX = event.touches[0].clientX
+        state.touchStartY = event.touches[0].clientY
+      }
+    }
+
+    const handleTouchMove = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        const touchCurrentX = event.touches[0].clientX
+        const touchCurrentY = event.touches[0].clientY
+        const touchDiffX = state.touchStartY - touchCurrentY
+        const touchDiffY = state.touchStartX - touchCurrentX
+        if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
+          event.preventDefault()
+          el.scrollLeft += touchDiffX * 0.2
         }
       }
     }
@@ -100,9 +128,13 @@ export default {
         if (state.isHorizontalScroll) {
           el.addEventListener('wheel', handleWheelScroll)
           document.addEventListener('keydown', handleKeyDown)
+          el.addEventListener('touchstart', handleTouchStart)
+          el.addEventListener('touchmove', handleTouchMove, { passive: false })
         } else {
           el.removeEventListener('wheel', handleWheelScroll)
           document.removeEventListener('keydown', handleKeyDown)
+          el.removeEventListener('touchstart', handleTouchStart)
+          el.removeEventListener('touchmove', handleTouchMove, { passive: false })
         }
       }
     }
@@ -118,16 +150,23 @@ export default {
       if (el) {
         el.removeEventListener('wheel', handleWheelScroll)
         document.removeEventListener('keydown', handleKeyDown)
+        el.removeEventListener('touchstart', handleTouchStart)
+        el.removeEventListener('touchmove', handleTouchMove, { passive: false })
       }
     })
 
     return {
       handleWheelScroll,
-      handleKeyDown
+      handleKeyDown,
+      handleTouchStart,
+      handleTouchMove,
+      state
     }
   }
 };
 </script>
+
+
 
 
 

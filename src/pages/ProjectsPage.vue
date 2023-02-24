@@ -1,69 +1,66 @@
 <template>
-  <div style="height: 100vh;">
-    <a style="position: absolute; top: 20px;left: 20px;" v-if="$router.path !== '/'"
-       @click="$router.push ('/')">Главная</a>
-    <div class="project">
-      <div class="project-block">
-        <div class="project-block--one">
-          <div class="project-block--one_img">
-            <img src="/img/degno.jpg">
-          </div>
-        </div>
-        <div class="project-block--two">
-          <div class="project-block--two_img">
-            <img src="/img/eamedia.jpg">
-          </div>
-        </div>
-      </div>
-      <div class="project-block--nav">
-        <div class="project-block--nav_white">
-        </div>
-        <nav>
-          <div class="project-block--nav_name">
-            <p>DEGNO group</p>
-            <a href="https://degno.netlify.app/">Перейти</a>
-          </div>
-          <div class="project-block--nav_name">
-            <p>EAmedia</p>
-            <a href="https://eamedia.ae/">Перейти</a>
-          </div>
-        </nav>
-      </div>
-    </div>
+  <div class="container">
+    <div class="test" :class="{ hide: !testVisible }">TEST</div>
+    <div class="test2" :class="{ hide: testVisible || !test2Visible }">TEST 2</div>
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<style>
+.container {
+  height: 200vh;
+  position: relative;
+}
 
-export default defineComponent({
-  name: 'ProjectsPage'
+.test {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-})
+.test2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
-</script>
-
-<style scoped>
-.project {
-  display: flex;
-  width: 100%;
-}
-.project-block--one {
-  display: flex;
-  width: 100%
-}
-.project-block--two {
-  display: flex;
-  width: 100%
-}
-.project-block--nav{
-  height: 100vh;
-  width: 100%;
-}
-.project-block--nav_white {
-  height: 50%;
-}
-nav {
-  height: 50%;
+.hide {
+  display: none;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      testVisible: true,
+      test2Visible: false,
+    };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      if (window.scrollY >= window.innerHeight * 0.5) {
+        this.testVisible = false;
+        this.test2Visible = true;
+      } else {
+        this.testVisible = true;
+        this.test2Visible = false;
+      }
+    },
+  },
+};
+</script>
+
+
+
+
+
+
+
