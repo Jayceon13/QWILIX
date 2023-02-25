@@ -15,7 +15,7 @@
            class="block-about"
            style="cursor: pointer"
       >
-        ABOUT US
+        About US
       </div>
       <div @click="() => {$router.push ('projects'); blockBurgerMenu()}"
            class="block-examples">
@@ -25,7 +25,7 @@
            class="block-contacts"
            style="cursor: pointer"
       >
-        CONTACTS
+        Contacts
       </div>
     </div>
   </transition>
@@ -63,6 +63,11 @@ export default {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 90;
+}
+@media only screen and (max-width: 780px) {
+  .block-background {
+    background: silver;
+  }
 }
 .router-animation-leave-active,
 .router-animation-enter-active{
@@ -111,6 +116,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   height: 50px;
+  position: absolute;
 }
 @media screen and (min-width: 780px) {
   .header-block{
@@ -139,7 +145,7 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
-    font-weight: bold;
+    font-weight: 300;
     display: flex;
     align-items: self-end;
     padding: 80px;
@@ -161,11 +167,11 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
-    font-weight: bold;
+    font-weight: 300;
     display: flex;
     align-items: self-end;
     padding: 80px;
-    font-size: 25px;
+    font-size: 30px;
   }
   @media only screen and (max-height: 500px) {
     .block-examples {
@@ -183,11 +189,11 @@ export default {
     background: white;
     border: black 1px solid;
     position: absolute;
-    font-weight: bold;
+    font-weight: 300;
     display: flex;
     align-items: self-end;
     padding: 80px;
-    font-size: 20px;
+    font-size: 30px;
   }
   @media only screen and (max-height: 500px) {
     .block-contacts {
