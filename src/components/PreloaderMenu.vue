@@ -51,7 +51,11 @@
   width: 300px;
 }
 
-
+@media screen and (max-width: 500px){
+  .img-2{
+    width: 100px;
+  }
+}
 @keyframes slide-up-1 {
   0%{
     transform: translateY(0%);

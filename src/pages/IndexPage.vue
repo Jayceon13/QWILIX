@@ -7,7 +7,6 @@
         <div class="parallax-layer"></div>
         <div class="parallax-layer">
           <div class="parallax-content">
-            <!-- Ваш контент здесь -->
           </div>
         </div>
       </div>
@@ -66,7 +65,9 @@ export default {
   },
   setup () {
     const state = reactive({
-      isHorizontalScroll: window.innerWidth > 780
+      isHorizontalScroll: window.innerWidth > 780,
+      touchStartX: 0,
+      touchStartY: 0
     })
 
     const handleWheelScroll = (event) => {
@@ -77,17 +78,43 @@ export default {
         if (event.deltaMode === 1) {
           delta *= 40
         }
-        el.scrollLeft += delta / 2
+        if (window.innerWidth <= 780) {
+          el.scrollLeft += delta
+        } else {
+          el.scrollLeft += delta / 2
+        }
       }
     }
 
     const handleKeyDown = (event) => {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
-        if (event.key === 'ArrowUp') {
-          el.scrollLeft -= 40
-        } else if (event.key === 'ArrowDown') {
-          el.scrollLeft += 40
+        if (event.keyCode === 37) {
+          el.scrollLeft -= 20
+        } else if (event.keyCode === 39) {
+          el.scrollLeft += 20
+        }
+      }
+    }
+
+    const handleTouchStart = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        state.touchStartX = event.touches[0].clientX
+        state.touchStartY = event.touches[0].clientY
+      }
+    }
+
+    const handleTouchMove = (event) => {
+      const el = document.querySelector('.horizontal-scroll')
+      if (el) {
+        const touchCurrentX = event.touches[0].clientX
+        const touchCurrentY = event.touches[0].clientY
+        const touchDiffX = state.touchStartY - touchCurrentY
+        const touchDiffY = state.touchStartX - touchCurrentX
+        if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
+          event.preventDefault()
+          el.scrollLeft += touchDiffX * 0.2
         }
       }
     }
@@ -100,9 +127,13 @@ export default {
         if (state.isHorizontalScroll) {
           el.addEventListener('wheel', handleWheelScroll)
           document.addEventListener('keydown', handleKeyDown)
+          el.addEventListener('touchstart', handleTouchStart)
+          el.addEventListener('touchmove', handleTouchMove, { passive: false })
         } else {
           el.removeEventListener('wheel', handleWheelScroll)
           document.removeEventListener('keydown', handleKeyDown)
+          el.removeEventListener('touchstart', handleTouchStart)
+          el.removeEventListener('touchmove', handleTouchMove, { passive: false })
         }
       }
     }
@@ -118,16 +149,23 @@ export default {
       if (el) {
         el.removeEventListener('wheel', handleWheelScroll)
         document.removeEventListener('keydown', handleKeyDown)
+        el.removeEventListener('touchstart', handleTouchStart)
+        el.removeEventListener('touchmove', handleTouchMove, { passive: false })
       }
     })
 
     return {
       handleWheelScroll,
-      handleKeyDown
+      handleKeyDown,
+      handleTouchStart,
+      handleTouchMove,
+      state
     }
   }
 };
 </script>
+
+
 
 
 
@@ -272,6 +310,50 @@ export default {
  }
   .first-block-text{
     width: 100%;
+  }
+}
+@media only screen and (max-height: 400px) {
+  .logo{
+    width: 300px;
+  }
+  .first-block-text h5{
+    margin-bottom: 60px;
+    margin-left: 10px;
+  }
+  .second-block-text p[data-v-7e76ac0d] {
+    padding: 30px;
+  }
+  .block-vit img{
+    width: 20%;
+  }
+  .block-dyuk img{
+    width: 20%;
+  }
+  .block-dyuk{
+    margin: 10px;
+  }
+  .block-vit{
+    margin: 10px;
+  }
+  .block-developers p{
+    margin: 0;
+  }
+  .third-block h4{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+  }
+  .third-block-text{
+    padding: 10px;
+    width: 60%;
+    justify-content: center;
+  }
+  .third-block-img {
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 70px 0 0;
   }
 }
 @media only screen and (max-width: 780px) {
