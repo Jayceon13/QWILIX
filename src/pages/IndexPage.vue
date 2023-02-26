@@ -173,13 +173,16 @@ export default {
 .first-block{
   width: 100vw;
   height: 100vh;
-  background-image: url("/img/japan.jpg");
+  background-image: url("/img/bgmain.png");
   background-size: cover;
   display: flex;
+  background-position: center;
+  font-family: "Oleo Script";
 }
 .second-block{
   width: 100vw;
   height: 100vh;
+  font-family: "Oleo Script";
 }
 .third-block{
   width: 100vw;
@@ -204,6 +207,7 @@ export default {
 }
 .third-block{
   display: flex;
+  font-family: "Oleo Script";
 }
 .third-block-text{
   display: flex;
@@ -262,7 +266,6 @@ export default {
     display: flex;
     height: 100%;
     align-items: flex-end;
-    font-weight: bold;
   }
   .block-vit{
     height: 38%;
@@ -270,7 +273,6 @@ export default {
     text-align: center;
     margin: 40px;
     flex-flow: column;
-    font-weight: bold;
   }
   .block-dyuk{
     height: 38%;
@@ -278,7 +280,6 @@ export default {
     text-align: center;
     margin: 40px;
     flex-flow: column;
-    font-weight: bold;
   }
   .block-developers img{
     width: 30%;
@@ -292,7 +293,6 @@ export default {
     border-right: black 1px solid;
     padding: 40px;
     justify-content: space-between;
-    font-weight: bold;
   }
   .third-block-img{
     width: 60%;

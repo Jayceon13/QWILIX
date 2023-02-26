@@ -16,7 +16,7 @@
           <div class="mobile-item--name bold">
             <a class="mobile-item--name-link" :href="container.url">
               {{container.name}}
-            <p class="mobile-name">View Project</p>
+              <p class="mobile-name">View Project</p>
             </a>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default {
       const navBlocks = document.querySelectorAll('.nav-block');
       navBlocks.forEach((navBlock) => {
         setTimeout(function () { navBlock.classList.remove('bold');
-          },9000) ;
+        },9000) ;
       });
       navBlocks[index].classList.add('bold');
 
@@ -218,6 +218,7 @@ export default {
   }
 }
 </style>
+
 
 
 

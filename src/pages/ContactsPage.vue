@@ -6,7 +6,8 @@
           Connect with us
         </h5>
         <p>You can fill out the feedback form and we will contact you as soon as possible</p>
-        <p @click="blockFeed" style="cursor: pointer">Form</p>
+        <q-btn class="btn-form" outline rounded color="black" label="Form"
+               @click="blockFeed" style="width: 90px"/>
       </div>
       <div class="block-contacts-text-2">
         <p>Or you can write to contact us in one of the ways convenient for you.</p>
@@ -53,7 +54,6 @@ export default defineComponent({
   width: 50%;
   height: 100%;
   background: white;
-  position: absolute;
   flex-flow: column;
 }
 .xicon{
@@ -88,6 +88,7 @@ export default defineComponent({
 }
 
 .block-contacts{
+  font-family: "Oleo Script";
   display: flex;
 }
 .block-contacts-text{
@@ -105,14 +106,78 @@ export default defineComponent({
 .block-contacts-image{
   display: flex;
 }
-@media screen and (min-width: 780px){
+@media screen and (max-width: 1100px){
+  .qwilix-img{
+    width: 350px;
+  }
+  .block-contacts-image{
+    width: 70%;
+    justify-content: center;
+    border-left: black 1px solid;
+  }
+  .block-contacts-text{
+    width: 30%;
+    flex-flow: column;
+    align-self: self-end;
+  }
+}
+@media screen and (min-width: 600px){
+  .feedback-block{
+    position: absolute;
+  }
+}
+@media screen and (max-width: 600px){
+  .qwilix-img{
+    width: 350px;
+  }
+  .block-contacts-image{
+    width: 100%;
+    justify-content: center;
+    border: none;
+  }
+  .block-contacts-text{
+    width: 100%;
+    flex-flow: column;
+    align-self: self-end;
+  }
   .block-contacts{
-    height: 100vh;
-    width: 100vw;
+    flex-flow: column;
+    margin: 30px;
+  }
+  .block-contacts-text-1{
+    flex-flow: column;
+  }
+  .block-contacts-text-2{
+    flex-flow: column;
+
+  }
+  .feedback-block{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+    flex-flow: column;
+  }
+}
+
+@media screen and (min-width: 1100px){
+  .qwilix-img{
+    width: 500px;
+  }
+  .block-contacts-image{
+    width: 60%;
+    justify-content: center;
   }
   .block-contacts-text{
     width: 40%;
     border-right: black 1px solid;
+  }
+}
+@media screen and (min-width: 780px){
+  .block-contacts{
+    height: 100vh;
+    width: 100vw;
   }
   .block-contacts-text-1,
   .block-contacts-text-2{
@@ -120,13 +185,6 @@ export default defineComponent({
     flex-flow: column;
     padding: 30px;
     align-self: flex-end;
-  }
-  .block-contacts-image{
-    width: 60%;
-    justify-content: center;
-  }
-  .qwilix-img{
-    width: 500px;
   }
 }
 </style>
