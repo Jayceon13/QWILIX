@@ -1,8 +1,14 @@
 <template>
-  <div class="about-page">
-    <a style="position: absolute; top: 20px;left: 20px;" v-if="$router.path !== '/'"
-       @click="$router.push ('/')">Главная</a>
-About
+  <div class="q-pa-md q-gutter-md">
+    <div class="row window-height">
+
+      <q-parallax
+        src="/img/bgmain.png"
+      >
+        <h1 class="text-white">Basic</h1>
+      </q-parallax>
+
+    </div>
   </div>
 </template>
 

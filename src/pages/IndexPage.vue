@@ -3,12 +3,8 @@
   <q-page ref="page" class="horizontal-scroll">
 
     <div class="first-block">
-      <div class="parallax-container">
-        <div class="parallax-layer"></div>
-        <div class="parallax-layer">
-          <div class="parallax-content">
-          </div>
-        </div>
+      <div class="parallax-bg" data-speed="10">
+
       </div>
       <div class="block-logo">
         <img class="logo" src="/img/QWILIX.svg">
@@ -69,7 +65,6 @@ export default {
       touchStartX: 0,
       touchStartY: 0
     })
-
     const handleWheelScroll = (event) => {
       event.preventDefault()
       const el = document.querySelector('.horizontal-scroll')
@@ -89,10 +84,16 @@ export default {
     const handleKeyDown = (event) => {
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
-        if (event.keyCode === 37) {
-          el.scrollLeft -= 20
-        } else if (event.keyCode === 39) {
-          el.scrollLeft += 20
+        if (event.keyCode === 38) {
+          el.scrollBy({
+            left: -50,
+            behavior: 'smooth'
+          });
+        } else if (event.keyCode === 40) {
+          el.scrollBy({
+            left: 50,
+            behavior: 'smooth'
+          });
         }
       }
     }
@@ -114,7 +115,7 @@ export default {
         const touchDiffY = state.touchStartX - touchCurrentX
         if (Math.abs(touchDiffX) > Math.abs(touchDiffY)) {
           event.preventDefault()
-          el.scrollLeft += touchDiffX * 0.2
+          el.scrollLeft += touchDiffX * 0.4
         }
       }
     }
@@ -141,9 +142,17 @@ export default {
     onMounted(() => {
       toggleHorizontalScroll()
       window.addEventListener('resize', toggleHorizontalScroll)
+      const parallaxBg = document.querySelector('.parallax-bg');
+
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollX;
+
+        parallaxBg.style.transform = `translateX(${scrollPosition * 2}px)`;
+      });
     })
 
     onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', toggleHorizontalScroll)
       const el = document.querySelector('.horizontal-scroll')
       if (el) {
@@ -170,13 +179,22 @@ export default {
 
 
 <style scoped>
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/bgmain.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
 .first-block{
   width: 100vw;
   height: 100vh;
-  background-image: url("/img/bgmain.png");
-  background-size: cover;
   display: flex;
-  background-position: center;
   font-family: "Oleo Script";
 }
 .second-block{
