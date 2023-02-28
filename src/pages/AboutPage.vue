@@ -6,7 +6,7 @@
 
       </div>
       <div class="first-block-text">
-        <h5>Welcome to our company, a leading provider of website development services. Our team of skilled professionals is dedicated to creating stunning websites that not only look great, but also provide exceptional user experiences.</h5>
+        <h1>About</h1>
       </div>
     </div>
     <div class="second-block">
@@ -24,24 +24,32 @@
       <div class="block-developers">
         <div class="block-vit">
           <img src="/img/vit.png">
-          <p>Vitalii Alferuk</p>
           <p>Nickname: Jayceon</p>
-          <p>FullStack Developer</p>
+          <p><strong> FullStack Developer </strong></p>
         </div>
         <div class="block-dyuk">
           <img src="/img/dyuk.png">
-          <p>Andrey Alferuk</p>
           <p>Nickname: Dyuk</p>
-          <p>FullStack Developer</p>
+          <p> <strong>FullStack Developer</strong> </p>
         </div>
       </div>
     </div>
     <div class="fourth-block">
-      <div class="fourth-block-projects">
-        View projects
+      <div class="fourth-block-item">
+       <div class="fourth-block-item-text">
+         <h2>ONE
+           GOAL.</h2>
+          <h3> A SHARED
+           VISION.</h3>
+       </div>
       </div>
-      <div class="fourth-block-form">
-        Request submit
+      <div class="fourth-block-link">
+        <div class="fourth-block-link-inst">
+          Insta
+        </div>
+        <div class="fourth-block-link-tg">
+          Telega
+        </div>
       </div>
     </div>
   </q-page>
@@ -179,7 +187,7 @@ export default {
   background-size: cover;
   background-position: center;
   z-index: -1;
-  width: 50%;
+  width: 40%;
   height: 100%;
   bottom: 0;
 }
@@ -188,7 +196,8 @@ export default {
   width: 100vw;
   height: 100vh;
   display: flex;
-  font-family: "Oleo Script";
+  align-content: center;
+  justify-content: center;
 }
 .second-block{
   width: 100vw;
@@ -200,8 +209,12 @@ export default {
   height: 100vh;
 }
 .first-block-text{
-  display: flex;
-  align-items: flex-end;
+  position: absolute;
+
+}
+.first-block-text h1 {
+  font-size: 400px;
+  font-weight: 600;
 }
 .second-block{
   display: flex;
@@ -217,7 +230,7 @@ export default {
 }
 .third-block{
   display: flex;
-  font-family: "Oleo Script";
+  background-color:rgba(61,68,66);
 }
 .third-block-text{
   display: flex;
@@ -232,6 +245,52 @@ export default {
 .third-block-img{
   display: flex;
   padding: 40px;
+}
+.fourth-block{
+  display: flex;
+}
+.fourth-block-item{
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+.fourth-block-item-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+}
+.fourth-block-item-text h2 {
+  font-size: 15vw;
+  font-weight: 300;
+  margin: 0;
+  line-height: 10rem;
+}
+.fourth-block-item-text h3 {
+  font-size: 9vw;
+  font-weight: 300;
+  margin: 0;
+  line-height: 6rem;
+}
+.fourth-block-link {
+  color: white;
+  font-size: 100px;
+  width: 50%;
+  height: 100%;
+}
+.fourth-block-link-inst {
+  height: 50%;
+  background: linear-gradient(45deg,rgb(142,68,175) 0,rgb(246,49,45) 75%,rgb(254,190,91) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 60px;
+}
+.fourth-block-link-tg {
+  height: 50%;
+  background: #000;
+  display: flex;
+  align-items: flex-end;
+  padding: 60px;
 }
 @media only screen and (min-width: 780px) {
   .q-page.horizontal-scroll {
@@ -250,12 +309,12 @@ export default {
       overflow-x: scroll;
       -webkit-overflow-scrolling: touch;
     }
-    .first-block, .second-block, .third-block {
+    .first-block, .second-block, .third-block, .fourth-block {
       flex: 0 0 100vw;
       height: 100vh;
     }
   }
-  .first-block, .second-block, .third-block {
+  .first-block, .second-block, .third-block, .fourth-block {
     flex: 0 0 100vw;
     height: 100vh;
     width: 100%;
@@ -264,8 +323,6 @@ export default {
   .first-block-text{
     display: flex;
     align-self: flex-end;
-    padding: 0 160px 0 20px;
-    width: 50%;
   }
   .second-block-text{
     width: 50%;
@@ -288,13 +345,19 @@ export default {
     display: flex;
     text-align: center;
     margin: 40px;
-    flex-flow: column;
+    flex-direction: column-reverse;
+    font-size: 30px;
+    color: aliceblue;
+    font-weight: 300;
   }
   .block-dyuk{
     display: flex;
     text-align: center;
     margin: 40px;
     flex-flow: column;
+    font-size: 30px;
+    color: aliceblue;
+    font-weight: 300;
   }
   .block-developers img{
     align-self: center;
@@ -318,6 +381,7 @@ export default {
     height: auto;
   }
 }
+
 @media only screen and (max-width: 1000px) {
   .first-block-text h5{
     font-size: 15px;
@@ -413,5 +477,3 @@ export default {
 }
 
 </style>
-
-
