@@ -36,7 +36,7 @@ export default {
     return {
       currentImage: 0,
       projects: [
-        {id:1, img:'/img/degno.png', name:'Degno Group', url:'https://degno.netlify.app/'},
+        {id:1, img:'/img/kika.png', name:'Kika Makeup', url:'https://kika-pro.netlify.app/'},
         {id:2, img:'/img/eamedia.png', name:'EAmedia', url:'https://eamedia.ae/'},
       ]
     };
